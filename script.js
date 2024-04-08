@@ -43,7 +43,9 @@ function drawColor() {
   let div = document.querySelectorAll('.bg');
   div.forEach(function(color) {
     color.addEventListener('mouseover', () => {
-      color.style.backgroundColor = getRGB();
+      if (color.style.backgroundColor == '') { // color the square only if it's not colored
+          color.style.backgroundColor = getRGB();
+      }
     });
   });
 }
