@@ -19,9 +19,9 @@ function drawGrid() {
 
 const btn = document.querySelector("button");
 btn.addEventListener('click', () => {
-   squares = Number(prompt("Give no. of squares per side for new grid: "));
+   squares = Number(prompt("Give number of squares per side for new grid: "));
    while(isNaN(squares) || squares > 100 || squares <= 0) { // check for correct user input
-	squares = Number(prompt("No. should be between 1-100: "));
+	squares = Number(prompt("Number should be between 1-100: "));
    }
 
    let remove = container.querySelectorAll('div');
@@ -32,12 +32,20 @@ btn.addEventListener('click', () => {
   drawColor();
 });
 
+function getRGB() {
+  let num1 =  Math.floor(Math.random() * 255);
+  let num2 =  Math.floor(Math.random() * 255);
+  let num3 =  Math.floor(Math.random() * 255);
+  return `rgba(${num1}, ${num2}, ${num3})`;
+};
+
 function drawColor() {
   let div = document.querySelectorAll('.bg');
   div.forEach(function(color) {
     color.addEventListener('mouseover', () => {
-      color.style.backgroundColor = 'red';
+      color.style.backgroundColor = getRGB();
     });
   });
 }
 drawColor();
+
